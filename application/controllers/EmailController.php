@@ -20,8 +20,8 @@ class EmailController extends REST_Controller{
                         'protocol' => 'smtp',
                         'smtp_host' => 'smtp.gmail.com',
                         'smtp_port' => 587,
-                        'smtp_user' => '',
-                        'smtp_pass' => '',
+                        'smtp_user' => 'elena.nito398@gmail.com',
+                        'smtp_pass' => '1a2b3c4d@',
                         'charset' => 'utf-8',
                         'wordwrap' => true,
                         'priority' => 1
@@ -29,7 +29,7 @@ class EmailController extends REST_Controller{
 
                         $this->email->initialize($config);
 
-                        $this->email->from('tu email', 'Your Name');
+                        $this->email->from('elena.nito398@gmail.com', 'SIGAP');
                         $this->email->to($email);
         
                         $this->email->subject('Restablecer contraseña');
