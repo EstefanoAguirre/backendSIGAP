@@ -28,6 +28,7 @@ class RecuperacionController extends REST_Controller{
                 }
 
     		}
+		 $array_out = array("result"=>"sd");
 
     	}
 
