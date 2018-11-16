@@ -8,7 +8,7 @@ class RecuperacionController extends REST_Controller{
         $this->load->model('recuperacionmodel');
     }
 
-    public index_get(){
+    public function index_get(){
     	//$tipo=$this->get("tipo");
     	$email=$this->get("email");
     	$dni=$this->get("dni");
