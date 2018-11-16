@@ -12,7 +12,7 @@ class Recuperacionmodel extends CI_Model
 		$query=$this->db->query("select a.id_usuario from usuario u,administrativo a,usuario_perfil up where a.email = ".$email." and a.dni=".$dni." and a.telefono=".$telefono." and a.id_usuario = up.id_usuario and up.id_usuario = u.id_usuario and (up.id_perfil = 1 or up.id_perfil = 2) and up.estado_up=true;");
 		//print_r($query);
 		$data=$query->result_array();
-		//echo "sdfsdf".count($data);
+		echo $data['id_usuario'];
 		if(count($data)>0){
 			return $data;
 		} else {
