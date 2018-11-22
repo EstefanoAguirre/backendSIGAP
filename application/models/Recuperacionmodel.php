@@ -10,7 +10,7 @@ class Recuperacionmodel extends CI_Model
 
 	public function comprobar_existencia($email,$dni,$telefono){
 		$query=$this->db->query
-		("select ad.id_usuario from usuario u INNER JOIN administrativo ad ON u.id_usuario=ad.id_usuario
+		("select id_usuario from usuario u INNER JOIN administrativo ad ON u.id_usuario=ad.id_usuario
 		INNER JOIN usuario_perfil up ON up.id_usuario = u.id_usuario 
 		WHERE ad.email = '".$email."' and ad.dni='".$dni."' and ad.telefono='".$telefono."'
 		AND (up.id_perfil = 1 or up.id_perfil = 2) and up.estado_up=true;");
