@@ -10,27 +10,32 @@ class RecuperacionController extends REST_Controller{
 
     public function index_get(){
     	//$tipo=$this->get("tipo");
-    	$email=$this->get("email");
-    	$dni=$this->get("dni");
-    	$telefono=$this->get("telefono");
-    	$contrasena=$this->get("pass");
-    	$array_out = array();
+    	$email=$this->post("email");
+    	$dni=$this->post("dni");
+    	$telefono=$this->post("telefono");
+    	$contrasena=$this->post("pass");
+    	//$array_out = array();
 
     	if($email!=null && $dni!=null && $telefono!=null && $contrasena!=null){
-    		$id=$this->emailmodel->comprobar_existencia($email);
+    		$id=$this->recuperacionmodel->comprobar_existencia($email,$dni,$telefono);
     		if($id!=false){
     			$respuesta=$this->recuperacionmodel->actualizar_pass($id,$contrasena);
-                if($respuesta==true){
-                    $array_out = array("result"=>"success");
-                }
-                else {
-                    $array_out = array("result"=>"error");
-                }
+                	if($respuesta==true){
+                    		$array_out = array("result"=>"success");
+               		}
+                	else {
+                    		$array_out = array("result"=>"error");
+               		}
 
     		}
-		 $array_out = array("result"=>"sd");
+		else{
+			$array_out = array("result"=>"no existe");
+		}	
 
     	}
+	else{
+		$array_out = array("return"=>"failure");
+	}
 
     	$this->response($array_out);
 
